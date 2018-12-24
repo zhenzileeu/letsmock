@@ -1,12 +1,17 @@
 package letsmock
 
-import "math/rand"
+import (
+	"math/rand"
+	"unicode/utf8"
+	"strings"
+)
 
 type TextMock struct {
 	wordChain markovChain
 }
 
 var defaultCommonWordsEnFile = "./res/common_words_en"
+var defaultUniversityCnFile = "./res/university_cn"
 
 func (m *TextMock) MockEnglishWord() string  {
 	return m.mockEnglish(mockIntmn(1, 10))
@@ -32,6 +37,39 @@ func (m *TextMock) MockChineseSentence(n int) string  {
 	}
 
 	return sentence
+}
+
+func (m *TextMock) MockNumberStr(n int) string  {
+	numberStr := ""
+	for i:=0; i<n; i++ {
+		numberStr += string('0'+mockIntn(10))
+	}
+
+	return numberStr
+}
+
+func (m *TextMock) MockUniversityCn() string  {
+	universities,err := readDataFromFile(defaultUniversityCnFile)
+	if err != nil {
+		return ""
+	}
+
+	universitiesChain := markovChain{}
+	universitiesChain.Train(universities, 2, 0.01)
+
+	fakeUniversity := ""
+	for ; utf8.RuneCountInString(fakeUniversity) < 2;  {
+		 fakeUniversity = universitiesChain.RandomNGenerate(mockIntmn(2, 10))
+	}
+
+	if strings.HasSuffix(fakeUniversity, "学院") {
+		return fakeUniversity
+	} else if strings.HasSuffix(fakeUniversity, "大学") {
+		return fakeUniversity
+	} else if mockIntn(10) < 5 {
+		return fakeUniversity + "学院"
+	}
+	return fakeUniversity + "大学"
 }
 
 func (m *TextMock) mockChinese(n int) string  {

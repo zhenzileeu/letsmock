@@ -22,3 +22,7 @@ func TestTextMock_MockChineseWord(t *testing.T) {
 func TestTextMock_MockChineseSentence(t *testing.T) {
 	fmt.Println("chinese sentence: ", textMock.MockChineseSentence(10))
 }
+
+func TestTextMock_MockUniversityCn(t *testing.T) {
+	fmt.Println("chinese university: ", textMock.MockUniversityCn())
+}

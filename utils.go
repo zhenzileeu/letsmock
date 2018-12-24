@@ -82,3 +82,18 @@ func readDataFromFile(filename string) ([]string, error)  {
 
 	return words,nil
 }
+
+func shuffleStr(str string) string {
+	runeStr := []rune(str)
+	idxMap := make(map[int]int, len(runeStr))
+	for idx := range runeStr {
+		idxMap[idx] = idx
+	}
+
+	var shuffleStr = ""
+	for idx := range idxMap {
+		shuffleStr += string(runeStr[idx])
+	}
+
+	return shuffleStr
+}
