@@ -59,3 +59,54 @@ func (m *IdentityMock) MockIdCardNum() string  {
 
 	return randomIDNum
 }
+
+func (m *IdentityMock) MockCnPhoneNumber() string  {
+	idx := mockIntn(4)
+
+	switch idx {
+	case 0:
+		return m.MockCnMobilePhoneNumber()
+	case 1:
+		return m.MockCnUnicomPhoneNumber()
+	case 2:
+		return m.MockCnTelecomPhoneNumber()
+	default:
+		return m.MockCnVirtualOperatorPhoneNumber()
+	}
+}
+
+func (m *IdentityMock) MockCnMobilePhoneNumber() string  {
+	segment := []string{"134", "135", "136", "137", "138", "139", "147", "150", "151", "152", "157", "158", "159", "178", "182", "183", "184", "187", "188", "198"}
+
+	randSeg := segment[mockIntn(len(segment))]
+	textMock := TextMock{}
+
+	return randSeg+textMock.MockNumberStr(8)
+}
+
+func (m *IdentityMock) MockCnUnicomPhoneNumber() string  {
+	segment := []string{"130", "131", "132", "145", "155", "156", "175", "176", "185", "186", "166"}
+
+	randSeg := segment[mockIntn(len(segment))]
+	textMock := TextMock{}
+
+	return randSeg+textMock.MockNumberStr(8)
+}
+
+func (m *IdentityMock) MockCnTelecomPhoneNumber() string  {
+	segment := []string{"133", "153", "173", "177", "180", "181", "189", "199"}
+
+	randSeg := segment[mockIntn(len(segment))]
+	textMock := TextMock{}
+
+	return randSeg+textMock.MockNumberStr(8)
+}
+
+func (m *IdentityMock) MockCnVirtualOperatorPhoneNumber() string  {
+	segment := []string{"170"}
+
+	randSeg := segment[mockIntn(len(segment))]
+	textMock := TextMock{}
+
+	return randSeg+textMock.MockNumberStr(8)
+}
