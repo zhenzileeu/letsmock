@@ -11,6 +11,7 @@ type TextMock struct {
 }
 
 var defaultCommonWordsEnFile = "./res/common_words_en"
+var defaultCommonWordsCnFile = "./res/common_words_cn"
 var defaultUniversityCnFile = "./res/university_cn"
 
 func (m *TextMock) MockEnglishWord() string  {
@@ -73,14 +74,19 @@ func (m *TextMock) MockUniversityCn() string  {
 }
 
 func (m *TextMock) mockChinese(n int) string  {
-	hf,he := 0x4e00,0x9fa5
-
-	word := ""
-	for i := 0; i < n; i++ {
-		word = word + string(hf + mockIntn(he-hf))
+	word,err := readWordsFromFile(defaultCommonWordsCnFile)
+	if err != nil {
+		return m.randomMockChinese(n)
 	}
 
-	return word
+	m.wordChain.Train(word, 2, 0.01)
+
+	fakeWord := m.wordChain.RandomNGenerate(n)
+	if fakeWord == "" {
+		return m.randomMockChinese(n)
+	}
+
+	return fakeWord
 }
 
 func (m *TextMock) mockEnglish(n int) string  {
@@ -101,6 +107,17 @@ func (m *TextMock) mockEnglish(n int) string  {
 
 func (m *TextMock) mockPunctuation() string  {
 	return ","
+}
+
+func (m *TextMock) randomMockChinese(n int) string {
+	hf,he := 0x4e00,0x9fa5
+
+	word := ""
+	for i := 0; i < n; i++ {
+		word = word + string(hf + mockIntn(he-hf))
+	}
+
+	return word
 }
 
 func (m *TextMock) randomMockEnglish(n int) string  {
