@@ -49,7 +49,7 @@ func (m *TextMock) MockNumberStr(n int) string  {
 }
 
 func (m *TextMock) MockUniversityCn() string  {
-	universities,err := readDataFromFile(defaultUniversityCnFile)
+	universities,err := readWordsFromFile(defaultUniversityCnFile)
 	if err != nil {
 		return ""
 	}
@@ -84,7 +84,7 @@ func (m *TextMock) mockChinese(n int) string  {
 }
 
 func (m *TextMock) mockEnglish(n int) string  {
-	word,err := readDataFromFile(defaultCommonWordsEnFile)
+	word,err := readWordsFromFile(defaultCommonWordsEnFile)
 	if err != nil {
 		return m.randomMockEnglish(n)
 	}

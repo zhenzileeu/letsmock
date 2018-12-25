@@ -72,14 +72,13 @@ func capitalFirstCharacter(str string) string {
 	return string(runeStr)
 }
 
-func readDataFromFile(filename string) ([]string, error)  {
-	content, err := ioutil.ReadFile(filename)
+func readWordsFromFile(filename string) ([]string, error)  {
+	content, err := readFile(filename)
 	if err != nil {
 		return nil,err
 	}
 
 	words := strings.Split(string(content), ",")
-
 	return words,nil
 }
 
@@ -96,4 +95,10 @@ func shuffleStr(str string) string {
 	}
 
 	return shuffleStr
+}
+
+func readFile(filename string) ([]byte, error) {
+	content,err := ioutil.ReadFile(filename)
+
+	return content,err
 }

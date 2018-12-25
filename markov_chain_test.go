@@ -6,7 +6,7 @@ import (
 )
 
 func TestMarkovChain_RandomNGenerate(t *testing.T) {
-	words,err := readDataFromFile("./res/first_name_en")
+	words,err := readWordsFromFile("./res/first_name_en")
 	if err != nil {
 		t.Error("something goes wrong")
 		return

@@ -20,7 +20,7 @@ func (m *NameMock) MockEnName() string  {
 }
 
 func (m *NameMock) MockEnFirstName() string {
-	firstNameEn, err := readDataFromFile(defaultEnFirstNameWordsFile)
+	firstNameEn, err := readWordsFromFile(defaultEnFirstNameWordsFile)
 	if err != nil {
 		return ""
 	}
@@ -31,7 +31,7 @@ func (m *NameMock) MockEnFirstName() string {
 }
 
 func (m *NameMock) MockEnFamilyName() string  {
-	familyNameEn, err := readDataFromFile(defaultEnFamilyNameWordsFile)
+	familyNameEn, err := readWordsFromFile(defaultEnFamilyNameWordsFile)
 	if err != nil {
 		return ""
 	}
@@ -46,7 +46,7 @@ func (m *NameMock) MockCnName() string  {
 }
 
 func (m *NameMock) MockCnFirstName() string  {
-	firstNameCn,err := readDataFromFile(defaultCnFirstNameWordsFile)
+	firstNameCn,err := readWordsFromFile(defaultCnFirstNameWordsFile)
 	if err != nil {
 		return ""
 	}
@@ -58,7 +58,7 @@ func (m *NameMock) MockCnFirstName() string  {
 }
 
 func (m *NameMock) MockCnFamilyName() string  {
-	familyNameCn,err := readDataFromFile(defaultCnFamilyNameWordsFile)
+	familyNameCn,err := readWordsFromFile(defaultCnFamilyNameWordsFile)
 	if err != nil {
 		return ""
 	}

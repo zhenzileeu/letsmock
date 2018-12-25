@@ -31,3 +31,26 @@ func TestIdentityMock_MockCnPhoneNumber(t *testing.T) {
 	fmt.Println("mock china phone number: ", m.MockCnPhoneNumber())
 }
 
+func TestIdentityMock_MockBankNumberOfCMB(t *testing.T) {
+	fmt.Println("mock cmb bank number: ", m.MockBankNumberOfCMB())
+}
+
+func TestIdentityMock_MockBankNumberOfPSBC(t *testing.T) {
+	fmt.Println("mock psbc bank number: ", m.MockBankNumberOfPSBC())
+}
+
+func TestIdentityMock_MockBankNumberOfCCB(t *testing.T) {
+	fmt.Println("mock ccb bank number: ", m.MockBankNumberOfCCB())
+}
+
+func TestIdentityMock_MockBankNumberOfBOC(t *testing.T) {
+	fmt.Println("mock boc bank number: ", m.MockBankNumberOfBOC())
+}
+
+func TestIdentityMock_MockBankNumberOfICBC(t *testing.T) {
+	fmt.Println("mock icbc bank number: ", m.MockBankNumberOfICBC())
+}
+
+func TestIdentityMock_MockBankNumber(t *testing.T) {
+	fmt.Println("mock bank number: ", m.MockBankNumber())
+}
