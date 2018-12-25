@@ -6,6 +6,8 @@ type mock struct {
 	Name NameMock
 	Password PasswordMock
 	Identity IdentityMock
+	Car CarMock
+	Inet InternetMock
 }
 
 var Mocker mock
@@ -16,5 +18,7 @@ func init() {
 	Mocker.Name = NameMock{}
 	Mocker.Password = PasswordMock{}
 	Mocker.Identity = IdentityMock{}
+	Mocker.Car = CarMock{}
+	Mocker.Inet = InternetMock{}
 }
 
