@@ -101,7 +101,7 @@ func (m *PasswordMock) MockNumberAlphaSpecialCharPassword(n, nSpecial, nCapital,
 	}
 
 	password := []rune(shuffleStr(specialPwd+capitalPwd+alphaPwd+numberPwd))
-	return string(password[0:n-1])
+	return string(password[0:n])
 }
 
 func (m *PasswordMock) mockSpecialCharPassword(n int, specialChar []rune) string  {
