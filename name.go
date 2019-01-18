@@ -1,5 +1,7 @@
 package letsmock
 
+import "fmt"
+
 type NameMock struct {
 	textMarkovChain markovChain
 }
@@ -31,6 +33,7 @@ func (m *NameMock) MockEnName() string  {
 func (m *NameMock) MockEnFirstName() string {
 	firstNameEn, err := readWordsFromFile(defaultEnFirstNameWordsFile)
 	if err != nil {
+		fmt.Println(err.Error())
 		return ""
 	}
 
@@ -69,6 +72,7 @@ func (m *NameMock) MockCnFirstName() string  {
 func (m *NameMock) MockCnFamilyName() string  {
 	familyNameCn,err := readWordsFromFile(defaultCnFamilyNameWordsFile)
 	if err != nil {
+		fmt.Println(err.Error())
 		return ""
 	}
 
