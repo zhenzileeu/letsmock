@@ -14,6 +14,18 @@ var defaultCommonWordsEnFile = "./res/common_words_en"
 var defaultCommonWordsCnFile = "./res/common_words_cn"
 var defaultUniversityCnFile = "./res/university_cn"
 
+func (m *TextMock) FeedResFileForEnWords(wordsResFile string)  {
+	defaultCommonWordsEnFile = wordsResFile
+}
+
+func (m *TextMock) FeedResFileForCnWords(wordsResFile string)  {
+	defaultCommonWordsCnFile = wordsResFile
+}
+
+func (m *TextMock) FeedResFileForUniversity(universityResFile string)  {
+	defaultUniversityCnFile = universityResFile
+}
+
 func (m *TextMock) MockEnglishWord() string  {
 	return m.mockEnglish(mockIntmn(1, 10))
 }

@@ -14,6 +14,15 @@ func init()  {
 	defaultCnFirstNameWordsFile  = "./res/first_name_cn"
 }
 
+func (m *NameMock) FeedResFileForEnName(firstNameResFile, familyNameResFile string)  {
+	defaultEnFirstNameWordsFile = firstNameResFile
+	defaultEnFamilyNameWordsFile = familyNameResFile
+}
+
+func (m *NameMock) FeedResFileForCnName(firstNameResFile, familyNameResFile string)  {
+	defaultCnFirstNameWordsFile = firstNameResFile
+	defaultCnFamilyNameWordsFile = familyNameResFile
+}
 
 func (m *NameMock) MockEnName() string  {
 	return m.MockEnFirstName() + " " + m.MockEnFamilyName()

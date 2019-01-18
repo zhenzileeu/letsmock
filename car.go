@@ -11,6 +11,11 @@ type CarMock struct {
 var cnCarPlateNoPrefixCfgFile = "./res/data/plate_no_prefix_cn.json"
 var defaultCarBrandsFile = "./res/car_brands"
 
+func (m *CarMock) FeedResFile(plateNoPrefixResFile, brandResFile string)  {
+	cnCarPlateNoPrefixCfgFile = plateNoPrefixResFile
+	defaultCarBrandsFile = brandResFile
+}
+
 func (m *CarMock) MockCarBrands() string  {
 	brands,err := readWordsFromFile(defaultCarBrandsFile)
 	if err != nil {

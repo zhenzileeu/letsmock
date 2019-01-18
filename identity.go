@@ -15,6 +15,11 @@ var cnAdministrativeDivisionCodeFile = "./res/administrative_division_code_cn"
 var cnDefaultBankBINFile = "./res/data/bank_identify_number_cn.json"
 var defaultAdministrativeDivisionCode = []string{"110101","东城区","110102","西城区","110105","朝阳区","110106","丰台区","110107","石景山区","110108","海淀区","110109","门头沟区","110111","房山区","110112","通州区","110113","顺义区","110114","昌平区","110115","大兴区","110116","怀柔区","110117","平谷区"}
 
+func (m *IdentityMock) FeedResFile(divisionCodeResFile, binCodeResFile string)  {
+	cnAdministrativeDivisionCodeFile = divisionCodeResFile
+	cnDefaultBankBINFile = binCodeResFile
+}
+
 func (m *IdentityMock) MockIdCardNum() string  {
 	//
 	content,err := readWordsFromFile(cnAdministrativeDivisionCodeFile)

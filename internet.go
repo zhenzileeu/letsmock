@@ -10,6 +10,14 @@ import (
 type InternetMock struct {
 }
 
+var websiteNameResFile = "./res/website_name_list"
+var domainNameResFile = "./res/domain_top_list"
+
+func (m *InternetMock) FeedResFile(siteResFile, domainResFile string)  {
+	websiteNameResFile = siteResFile
+	domainNameResFile = domainResFile
+}
+
 func (m *InternetMock) MockIpv4Addr() string  {
 	addr1 := strconv.Itoa(mockIntmn(1, 256))
 	addr2 := strconv.Itoa(mockIntn(256))
@@ -55,7 +63,7 @@ func (m *InternetMock) MockSiteDomainName(n int) string  {
 }
 
 func (m *InternetMock) MockSiteName(n int) string {
-	sites,err := readWordsFromFile("./res/website_name_list")
+	sites,err := readWordsFromFile(websiteNameResFile)
 	if err != nil {
 		txtMock := TextMock{}
 		return txtMock.mockEnglish(n)
@@ -118,7 +126,7 @@ func (m *InternetMock) MockEmailAddress(n int) string  {
 }
 
 func (m *InternetMock) mockTopDomain() string {
-	domains,err := readWordsFromFile("./res/domain_top_list")
+	domains,err := readWordsFromFile(domainNameResFile)
 	if err != nil {
 		domains = []string{"com", "org", "edu", "xyz"}
 	}

@@ -8,6 +8,7 @@ type mock struct {
 	Identity IdentityMock
 	Car CarMock
 	Inet InternetMock
+	Text TextMock
 }
 
 var Mocker mock
@@ -20,5 +21,5 @@ func init() {
 	Mocker.Identity = IdentityMock{}
 	Mocker.Car = CarMock{}
 	Mocker.Inet = InternetMock{}
+	Mocker.Text = TextMock{}
 }
-
