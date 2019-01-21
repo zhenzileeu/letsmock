@@ -29,7 +29,11 @@ func (m *NumberMock) MockFloat() float32  {
 }
 
 func (m *NumberMock) MockFloatmn(m1, n int) float32  {
-	return float32(m.MockIntmn(m1, n)) * mockFloat32()
+	if m1 < n {
+		return float32(m1) + float32(m.MockIntn(n-m1))*mockFloat32()
+	}
+	
+	return float32(m1)
 }
 
 func (m *NumberMock) MockNorm() float64  {
